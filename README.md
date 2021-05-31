@@ -16,3 +16,6 @@ The part below has to be changed to match your needs
 ```
 mvn clean gatling:test -Denv=local -Dduration=1200 -Dtps=300
 ```
+Duration is the test duration in seconds.
+TPS is the target transactions per seconds.
+Feel free to change thoses configuration numbers.
