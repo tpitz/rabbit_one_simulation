@@ -1,0 +1,37 @@
+{
+  "one_order_id": "ABCD",
+  "order_type": "R2H",
+  "sub_orders": [
+    {
+      "status": "CONFIRMED",
+      "sub_order_type": "R2H",
+      "delivery_location": "STORE",
+      "offers": [
+        {
+          "quantity": 1,
+          "cdbase": "abcdef",
+          "offer_line": 1,
+          "offer_unit": "UNIT",
+          "offer_id": null,
+          "taxes": [],
+          "product_name": "Saucisses fumées",
+          "image_path": "/img/saucisses.png",
+          "gtin": "abcdef"
+        }
+      ],
+      "sub_order_id": "666",
+      "creation_date_time": "2019-11-18T15:14:00Z",
+      "last_update_date_time": "2019-11-18T15:14:00Z",
+      "free_shipping": false
+    }
+  ],
+  "delivery_address": {
+    "city": "PARIS",
+    "country": "FR",
+    "elevator": false,
+    "intercom": false,
+    "address_type": "DELIVERY",
+    "street_address_one": "17 avenue de penelope",
+    "city_code": "75013"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "one_order_id": "RTFM666",
+  "order_type": "R2H",
+  "sub_orders": [
+    {
+      "sub_order_type": "R2H",
+      "delivery_location": "STORE",
+      "offers": [
+        {
+          "quantity": 1,
+          "cdbase": "oki",
+          "taxes": [
+            {
+              "code": "hahaha",
+              "label": "TVA 90%"
+            }
+          ],
+          "offer_line": 1,
+          "offer_id": "offer1",
+          "product_name": "Saucisses fumées",
+          "image_path": "/img/saucisses.png",
+          "gtin": null
+        },
+        {
+          "quantity": 1,
+          "cdbase": "abc",
+          "promotions": [
+            {
+              "promo_financing_type_code": "pk",
+              "supplier_mandatory_code": "oooo",
+              "free_quantity": 0.2,
+              "pack_number": 1,
+              "triggered_discount_quantity": 1,
+              "label": "PROMO",
+              "type": "RI"
+            }
+          ],
+          "offer_line": 2,
+          "offer_id": "offer2",
+          "product_name": "Papier penelope"
+        }
+      ],
+      "sub_order_id": "abc",
+      "creation_date_time": "2019-10-21T08:40:00Z",
+      "last_update_date_time": "2019-10-21T08:40:00Z",
+      "free_shipping": false,
+      "slot_info": {
+        "slot_date_begin": "2019-12-06T10:40:00Z",
+        "slot_date_end": "2019-12-06T12:40:00Z"
+      },
+      "status": "CONFIRMED"
+    }
+  ],
+  "customer_information": {
+    "id": "abcdef",
+    "uuid": "uid",
+    "civility": "MRS",
+    "email": "user.user@penelope.fr",
+    "first_name": "user",
+    "last_name": "user",
+    "contact_number": "+111111111",
+    "customer_order_substitution": false
+  },
+  "delivery_address": {
+    "city": "Levallois-Perret",
+    "elevator": false,
+    "intercom": false,
+    "street_address_one": "17 rue penelope",
+    "city_code": "56888"
+  },
+  "billing_address": {
+    "city": "Levallois-Perret",
+    "elevator": false,
+    "intercom": false,
+    "street_address_one": "17 rue penelope",
+    "city_code": "56888"
+  }
+}

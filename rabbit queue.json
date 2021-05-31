@@ -1,0 +1,160 @@
+{
+  "users": [
+    {
+      "name": "your_user",
+      "password_hash": "your_hash_password",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": ""
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "test",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "guest",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    
+  ],
+  "queues": [
+    {
+      "name": "Q-orc-deadletter",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "Q-ord-working",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "E-ord",
+        "x-dead-letter-routing-key": "retry"
+      }
+    },
+    {
+      "name": "Q-ord-deadletter",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "Q-ord-retry",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "E-ord",
+        "x-dead-letter-routing-key": "working",
+        "x-message-ttl": 300000
+      }
+    },
+    {
+      "name": "Q-orc-retry",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "E-orc",
+        "x-dead-letter-routing-key": "working",
+        "x-message-ttl": 5000
+      }
+    },
+    {
+      "name": "Q-orc-working",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-dead-letter-exchange": "E-orc",
+        "x-dead-letter-routing-key": "retry"
+      }
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "E-ord",
+      "vhost": "/",
+      "type": "direct",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "E-orc",
+      "vhost": "/",
+      "type": "direct",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "E-orc",
+      "vhost": "/",
+      "destination": "Q-orc-deadletter",
+      "destination_type": "queue",
+      "routing_key": "deadletter",
+      "arguments": {}
+    },
+    {
+      "source": "E-orc",
+      "vhost": "/",
+      "destination": "Q-orc-retry",
+      "destination_type": "queue",
+      "routing_key": "retry",
+      "arguments": {}
+    },
+    {
+      "source": "E-orc",
+      "vhost": "/",
+      "destination": "Q-orc-working",
+      "destination_type": "queue",
+      "routing_key": "working",
+      "arguments": {}
+    },
+    {
+      "source": "E-ord",
+      "vhost": "/",
+      "destination": "Q-ord-deadletter",
+      "destination_type": "queue",
+      "routing_key": "deadletter",
+      "arguments": {}
+    },
+    {
+      "source": "E-ord",
+      "vhost": "/",
+      "destination": "Q-ord-retry",
+      "destination_type": "queue",
+      "routing_key": "retry",
+      "arguments": {}
+    },
+    {
+      "source": "E-ord",
+      "vhost": "/",
+      "destination": "Q-ord-working",
+      "destination_type": "queue",
+      "routing_key": "working",
+      "arguments": {}
+    }
+  ]
+}
